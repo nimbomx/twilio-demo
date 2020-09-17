@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+$textColor:hsl(210, 7%, 29%);
+html, body{
+  height: 100%;;
+}
+
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  color: $textColor;
+  font-size: 1em;
+}
+
+#root{
+  display: flex;
+  height: 100%;
+}
+
+//Components
+.card{
+  background: white;
+  border-radius: 5px;
+  padding: 20px;
+  &__title{
+    font-size: 1rem;
+    font-weight: bold;
+  }
+}
+
+
+//Utils
+.uppercase{
+  text-transform: uppercase;
+}
+.bold{
+  font-weight: 700;
+}
+.position-relative{
+  position: relative;
+}
+.bordered{
+  border: 1px solid rgb(230, 230, 230);
+}
+.shadow{
+  box-shadow: 0 0 5px rgba(0,0,0,.4);
+}
