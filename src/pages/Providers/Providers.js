@@ -1,9 +1,35 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import './Providers.scss';
+import {MyContext} from '../../App'
 
 const Line = ({onCall}) => {
 
     const [showStatusMenu, setShowStatusMenu] = useState(false);
+
+    const {token, isAuth} = useContext(MyContext);
+
+    useEffect(() => {
+        if(token){
+            fetch('https://twilio-demo.nimbo.pro/api/user',{
+                method: 'GET',
+                headers:{
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization' : `Bearer ${token}`
+                }
+            })
+            .then((response) => {
+                return response.json();
+            })
+            .then((myJson) => {
+                console.log(myJson);
+            });
+        }
+        /*effect
+        return () => {
+            cleanup
+        };*/
+    }, [token]);
 
     return (
         <tr>
@@ -28,19 +54,6 @@ const Line = ({onCall}) => {
 }
 const Providers = () => {
 
-    fetch('https://laravel8.twilio.nb/api/user',{
-        headers:{
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-        }
-    })
-    .then((response) => {
-        console.log(response);
-        return response.json();
-    })
-    .then((myJson) => {
-        console.log(myJson);
-    });
 
 
     let source = null;

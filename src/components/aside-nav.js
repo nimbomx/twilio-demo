@@ -1,7 +1,9 @@
-import React from 'react';
+import React , {useContext} from 'react';
 import './aside-nav.scss';
+import {MyContext} from '../App'
 
 const AsideNav = () => {
+    const {isAuth, setIsAuth} = useContext(MyContext)
 
     const links = [
         {
@@ -13,11 +15,6 @@ const AsideNav = () => {
             id:'b2',
             image:'FAQ.svg',
             text:'FAQ'
-        },
-        {
-            id:'b3',
-            image:'Sign out.svg',
-            text:'Sign out'
         }
     ]
     return (
@@ -26,12 +23,16 @@ const AsideNav = () => {
                 <img src="/assets/TrueCare24_logo.svg"/>
             </div>
 
-            { links.map( ({id,image,text}) =>  
+            {isAuth &&  links.map( ({id,image,text}) =>  
                 <div key={id} className="aside-nav__link">
                     <img src={`/assets/${image}`}/><br/>
                     {text}
                 </div>
             )}
+            {isAuth && <div onClick={() => setIsAuth(false)} className="aside-nav__link">
+                <img src={`/assets/Sign out.svg`}/><br/>
+                Sign out
+            </div>}
         </aside>
     )
 }
