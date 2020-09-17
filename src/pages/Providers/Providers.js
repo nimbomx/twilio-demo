@@ -54,6 +54,7 @@ const Line = ({onCall}) => {
 }
 const Providers = () => {
 
+    const [toNumber, setToNumber] = useState('');
     const {token, isAuth} = useContext(MyContext);
 
     let source = null;
@@ -87,8 +88,12 @@ const Providers = () => {
     }
 
     const callMe = () => {
+        //fetch('https://laravel8.twilio.nb/api/twilio/callme',{
         fetch('https://twilio-demo.nimbo.pro/api/twilio/callme',{
-                method: 'GET',
+                method: 'POST',
+                body:JSON.stringify({
+                    number:toNumber
+                }),
                 headers:{
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
@@ -187,7 +192,7 @@ const Providers = () => {
         </table>
         {false&&<button onClick={startStream}>Start stream</button>}
         {false&&<button onClick={stopStream}>Close stream</button>}
-        {token&&<button onClick={callMe}>Call ME</button>}
+        {token&&<div><input placeholder="Number" value={toNumber} onChange={(e) => setToNumber(e.target.value)} /><button onClick={callMe}>Call ME</button></div>}
     </div> 
 }
 
