@@ -54,7 +54,7 @@ const Line = ({onCall}) => {
 }
 const Providers = () => {
 
-
+    const {token, isAuth} = useContext(MyContext);
 
     let source = null;
     const call = (id)=>{
@@ -84,6 +84,23 @@ const Providers = () => {
             source.close(); 
         console.log('Stream stoped')
 
+    }
+
+    const callMe = () => {
+        fetch('https://twilio-demo.nimbo.pro/api/twilio/callme',{
+                method: 'GET',
+                headers:{
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization' : `Bearer ${token}`
+                }
+            })
+            .then((response) => {
+                return response.text();
+            })
+            .then((myJson) => {
+                console.log(myJson);
+            });
     }
     return  <div className="Providers card">
         <div className="card__title">Matched providers</div>
@@ -170,6 +187,7 @@ const Providers = () => {
         </table>
         {false&&<button onClick={startStream}>Start stream</button>}
         {false&&<button onClick={stopStream}>Close stream</button>}
+        {token&&<button onClick={callMe}>Call ME</button>}
     </div> 
 }
 
