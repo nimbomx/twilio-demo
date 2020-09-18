@@ -1,16 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import './Auth.scss';
-
+import {MyContext} from '../../App'
 
 const SignIn = () => {
-
+    const {baseURL} = useContext(MyContext)
     let registarData = {
         "email":"test2@test.test",
         "password":"password",
         "name":"name"
     };
     const signIn = () => {
-        fetch('https://twilio-demo.nimbo.pro/api/register',{
+        fetch(baseURL + 'register',{
             method: 'POST',
             body:JSON.stringify(registarData),
             headers:{

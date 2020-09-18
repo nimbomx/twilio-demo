@@ -4,14 +4,14 @@ import './Auth.scss';
 
 
 const LogIn = () => {
-     const {isAuth, setIsAuth, setToken,setUser} = useContext(MyContext)
+     const {baseURL,isAuth, setIsAuth, setToken,setUser} = useContext(MyContext)
     let credentials = {
         "email":"test2@test.test",
         "password":"password"
     };
 
     const logIn = () => {
-        fetch('https://twilio-demo.nimbo.pro/api/login',{
+        fetch(baseURL + 'login',{
             method: 'POST',
             body:JSON.stringify(credentials),
             headers:{
