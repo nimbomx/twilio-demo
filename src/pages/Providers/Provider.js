@@ -7,28 +7,7 @@ const Provider = ({provider}) => {
     
     const [showStatusMenu, setShowStatusMenu] = useState(false);
 
-    const [toNumber, setToNumber] = useState('');
-    const [providers, setProviders] = useState([]);
     const {baseURL, token, isAuth} = useContext(MyContext);
-
-    useEffect(() => {
-        if(token){
-            fetch(baseURL + 'providers',{
-                method: 'GET',
-                headers:{
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'Authorization' : `Bearer ${token}`
-                }
-            })
-            .then((response) => {
-                return response.json();
-            })
-            .then((myJson) => {
-                setProviders(myJson)
-            });
-        }
-    }, [token]);
 
     let source = null;
     const call = (id)=>{
