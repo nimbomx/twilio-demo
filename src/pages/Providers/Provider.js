@@ -37,8 +37,8 @@ const Provider = ({provider}) => {
         source = new EventSource(baseURL + 'twilio/sse/' + ID);
         source.onmessage = (event) => {
             console.log(event.data);
-            if(event.data == 'completed') stopStream();
-            if(event.data == 'no-answer') stopStream();
+            if(event.data == 'a:completed') stopStream();
+            if(event.data == 'a:no-answer') stopStream();
         };
           
     }
