@@ -2,11 +2,12 @@ import React, {useState, useContext, useEffect} from 'react';
 import './Providers.scss';
 import {MyContext} from '../../App'
 import Provider from './Provider'
+import Feedback from './Feedback'
 
 const Providers = () => {
 
     const [providers, setProviders] = useState([]);
-    const {baseURL, token, isAuth} = useContext(MyContext);
+    const {baseURL, token, showFeedback} = useContext(MyContext);
 
     useEffect(() => {
         if(token){
@@ -27,7 +28,8 @@ const Providers = () => {
         }
     }, [token]);
 
-    return  <div className="Providers card">
+    return  <>
+    <div className="Providers card">
         <div className="card__title">Matched providers</div>
         <table>
             <thead>
@@ -49,7 +51,9 @@ const Providers = () => {
                 ) }
             </tbody>
         </table>
-    </div> 
+    </div>
+        {showFeedback && <Feedback /> }
+    </>
 }
 
 export default Providers;

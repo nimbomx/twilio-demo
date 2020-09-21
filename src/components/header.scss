@@ -1,4 +1,4 @@
-$textColor:hsl(210, 7%, 29%);
+$textColor:#46555E;
 .header{
     background: white;
     height: 60px;
@@ -6,6 +6,11 @@ $textColor:hsl(210, 7%, 29%);
     display:flex;
     align-content: center;
     align-items: center;
+    div{
+        display: flex;
+        align-content: center;
+        align-items: center;
+    }
     &__button{
         margin: 10px;
         background: transparent;
@@ -18,5 +23,44 @@ $textColor:hsl(210, 7%, 29%);
         img{
             margin-right: 15px;
         } 
+    }
+    .dropdown{
+        background: none;
+        border:none;
+        color: $textColor;
+        font-size: .9rem;
+        font-weight: 300;
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        cursor: pointer;
+        img{
+            margin-left: 10px;
+        }
+    }
+}
+.group-input{
+    display: flex;
+    input{
+        background: #F5F9FC;
+        border: 1px solid #DBE5EB;
+        border-right: 0px;
+        border-radius: 5px 0px 0px 5px;
+        margin-right: 0px;
+        padding: 0px;
+        height: 33px;
+    }
+    ::placeholder {
+        color: #758D9D;
+        font-family: 'Lato', sans-serif;
+        padding: 10px;
+        font-size: .85rem;
+      }
+    button{
+        background: transparent;
+        padding: 0px;
+        border: 0px;
+        margin: 0px;
+        height: 35px;
     }
 }

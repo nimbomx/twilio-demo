@@ -5,15 +5,18 @@ import './header.scss';
 const Header = () => {
     const {isAuth, user} = useContext(MyContext)
     return (
-        <header className="header">
-            <button className="header__button uppercase bold"><img src="/assets/Back 1.svg"/> Back</button>
-            <div>
-                <input placeholder="Go to case ID#" />
-                <button><img src="/assets/Go.svg"/></button>
+        <header className="header d-flex space-beteeen">
+            <div className="">
+                <button className="header__button uppercase bold"><img src="/assets/Back 1.svg"/> Back</button>
+                <div className="group-input">
+                    <input placeholder="Go to case ID#" />
+                    <button><img src="/assets/Go.svg"/></button>
+                </div>
+                <button className="header__button "><img src="/assets/Fulfillment KPIs.svg"/> Fulfillment KPIs</button> 
             </div>
-            <button className="header__button "><img src="/assets/Fulfillment KPIs.svg"/> Fulfillment KPIs</button> 
-
-            {isAuth && user && <button >{user.email}<img src="/assets/Dropdown.svg"/></button> }
+            <div>
+                {user && <button className="dropdown" >{user.email}<img src="/assets/Dropdown.svg"/></button> }
+            </div>  
         </header>
     )
 }

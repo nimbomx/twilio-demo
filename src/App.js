@@ -12,9 +12,11 @@ const MyContext = React.createContext()
 function App() {
   const [baseURL,setbaseURL] = useState('https://twilio-demo.nimbo.pro/api/')
   //const [baseURL,setbaseURL] = useState('https://laravel8.twilio.nb/api/')
+  const [showLogin,setShowLogin] = useState(true)
   const [isAuth,setIsAuth] = useState(false)
   const [token,setToken] = useState(null)
   const [user,setUser] = useState(null)
+  const [showFeedback,setShowFeedback] = useState(false)
   return (
     <MyContext.Provider value={
       {
@@ -22,20 +24,21 @@ function App() {
         isAuth, setIsAuth,
         token,setToken,
         user,setUser,
+        showFeedback,setShowFeedback
       }
     }>
 
     <main className="App">
 
-      <AsideNav />
+      {isAuth && <AsideNav />}
 
       <section className="App__section">
 
-        <AppHeader />
+        {isAuth && <AppHeader />}
 
         <main className="App__body">
-          { !isAuth && <LogIn />}
-          { !isAuth && <SignIn />}
+          { !isAuth && showLogin && <LogIn onShow={()=> setShowLogin(false)} />}
+          { !isAuth && !showLogin && <SignIn onShow={() => setShowLogin(true)} />}
           { isAuth && <Providers />}
         </main>
 

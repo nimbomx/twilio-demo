@@ -23,16 +23,16 @@ const AsideNav = () => {
                 <img src="/assets/TrueCare24_logo.svg"/>
             </div>
 
-            {isAuth &&  links.map( ({id,image,text}) =>  
+            {links.map( ({id,image,text}) =>  
                 <div key={id} className="aside-nav__link">
                     <img src={`/assets/${image}`}/><br/>
                     {text}
                 </div>
             )}
-            {isAuth && <div onClick={() => setIsAuth(false)} className="aside-nav__link">
+            <div onClick={() => setIsAuth(false)} className="aside-nav__link">
                 <img src={`/assets/Sign out.svg`}/><br/>
                 Sign out
-            </div>}
+            </div>
         </aside>
     )
 }

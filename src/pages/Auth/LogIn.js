@@ -3,17 +3,21 @@ import {MyContext} from '../../App'
 import './Auth.scss';
 
 
-const LogIn = () => {
-     const {baseURL,isAuth, setIsAuth, setToken,setUser} = useContext(MyContext)
-    let credentials = {
-        "email":"test2@test.test",
-        "password":"password"
-    };
+const LogIn = ({onShow}) => {
 
-    const logIn = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState({});
+
+     const {baseURL,isAuth, setIsAuth, setToken,setUser} = useContext(MyContext)
+
+    const logIn = evt => {
+        evt.preventDefault();
         fetch(baseURL + 'login',{
             method: 'POST',
-            body:JSON.stringify(credentials),
+            body:JSON.stringify({
+                email, password
+            }),
             headers:{
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
@@ -22,22 +26,43 @@ const LogIn = () => {
         .then((response) => {
             return response.json();
         })
+        .catch(e => {
+
+            console.log(e)
+            return;
+        })
         .then((myJson) => {
-            console.log(myJson);
-            setIsAuth(true)
-            setToken(myJson.token)
-            setUser(myJson.user)
+            if(myJson.token){
+                setIsAuth(true)
+                setToken(myJson.token)
+                setUser(myJson.user)
+            }else{
+                console.log(myJson.errors)
+                if(myJson.errors){
+                    setErrors(myJson.errors)
+                }
+            }
+            
         });
     }
 
 
     return  (
-
-            <div className="LogIn">
-                <h1>LogIn</h1>
-        {isAuth && "Auth"}
-                <button onClick={logIn}>Log In</button>
-            </div> 
+            <div className="d-flex flex-direction-column align-items-center">
+            <form className="LogIn card mb20" onSubmit={logIn}>
+                <h1 className="d-flex"><img src="/assets/TrueCare24_logo.svg"/> Log In</h1>
+                <div>
+                    <input className={errors.email && "error" } value={email} onChange={ e => setEmail(e.target.value)} placeholder="Email" type="email"/>
+                    {errors.email && <small>{errors.email[0]}</small>}
+                </div>
+                <div>
+                    <input className={errors.password && "error" } value={password} onChange={ e => setPassword(e.target.value)} placeholder="Password" type="password"/>
+                    {errors.password && <small>{errors.password[0]}</small>}
+                </div>
+                <button className="btn p10" type="submit">Log In</button>
+            </form> 
+            <a href="#" onClick={onShow}>Sign In</a>
+            </div>
 
     )
 }

@@ -6,8 +6,9 @@ import {MyContext} from '../../App'
 const Provider = ({provider}) => {
     
     const [showStatusMenu, setShowStatusMenu] = useState(false);
+    const [showOptionsMenu, setShowOptionsMenu] = useState(false);
 
-    const {baseURL, token, isAuth} = useContext(MyContext);
+    const {baseURL, token, setShowFeedback} = useContext(MyContext);
 
     let source = null;
     const call = (id)=>{
@@ -72,40 +73,53 @@ const Provider = ({provider}) => {
     const renderSwitch = (param) => {
         switch(param) {
           case 'contacting':
-            return <span><img src="/assets/Contacting 0.svg"/> Contacting</span>;
+            return <span><img src="/assets/Contacting 0.svg"/> <span>Contacting</span></span>;
           case 'talked':
-            return <span><img src="/assets/Talked to the client.svg"/> Talked to the client</span>;
+            return <span><img src="/assets/Talked to the client.svg"/> <span>Talked to the client</span></span>;
           case 'scheduled':
-            return <span><img src="/assets/Assessment scheduled.svg"/> Assessment scheduled</span>;
+            return <span><img src="/assets/Assessment scheduled.svg"/> <span>Assessment scheduled</span></span>;
           case 'signed':
-            return <span><img src="/assets/Contract Signed.svg"/> Contract Signed</span>;
+            return <span><img src="/assets/Contract Signed.svg"/> <span>Contract Signed</span></span>;
         default:
-            return <span><img src="/assets/Cancel the client.svg"/> Cancel the client</span>;
+            return <span><img src="/assets/Cancel the client.svg"/> <span>Cancel the client</span></span>;
 
         }
       }
     return  (
-        <tr>
-            <td>
-                {provider.contracted ? <img src="/assets/Contracted.svg"/> : <img src="/assets/Non Contracted.svg"/>}
-                {provider.type == 'agency' ? <img src="/assets/Home care agency.svg"/> : <img src="/assets/IC.svg"/>}
+        <tr className={provider.status == "cancel" ? "cancel" : ""}>
+            <td className="d-flex">
+                {provider.contracted ? <img className="p5" src="/assets/Contracted.svg"/> : <img className="p5" src="/assets/Non Contracted.svg"/>}
+                {provider.type == 'agency' ? <img className="p5" src="/assets/Home care agency.svg"/> : <img className="p5" src="/assets/IC.svg"/>}
             </td>
-            <td>{provider.name}</td>
+            <td><b>{provider.name}</b></td>
             <td>{provider.email}</td>
             <td>{provider.phone}</td>
             <td>{provider.id}</td>
 
             <td className="position-relative">
-                {showStatusMenu && <div className="status-menu card shadow" onClick={() => setShowStatusMenu(false)}>Status Menu</div>}
-                <button onClick={() => setShowStatusMenu(true)}>
+                {showStatusMenu && <div className="status-menu card shadow" onClick={() => setShowStatusMenu(false)}>
+                    <button className="btn status"><span><img src="/assets/Contacting 0.svg"/> <span>Contacting</span></span></button>
+                    <button className="btn status"><span><img src="/assets/Talked to the client.svg"/> <span>Talked to the client</span></span></button>
+                    <button className="btn status"><span><img src="/assets/Assessment scheduled.svg"/> <span>Assessment scheduled</span></span></button>
+                    <button className="btn status"><span><img src="/assets/Contract Signed.svg"/> <span>Contract Signed</span></span></button>
+                    <button className="btn status"><span><img src="/assets/Cancel the client.svg"/> <span>Cancel the client</span></span></button>
+                </div>}
+                <button className="btn status" onClick={() => setShowStatusMenu(true)}>
                 {renderSwitch(provider.status)}
                 </button>
             </td>
 
-            <td>
-                <button>Chat</button>
-                <button onClick={() => call(provider.id)}>Call</button>
-                <button onClick={() => {alert('options list')}}><img src="/assets/kebab menu.svg"/></button>
+            <td className="nowrap text-right position-relative">
+                <button className="btn">Chat</button>
+                <button className="btn green" onClick={() => call(provider.id)}>Call</button>
+
+                {showOptionsMenu && <div className="options-menu card shadow" onClick={() => setShowOptionsMenu(false)}>
+                    <button className="btn"><span>Send intro</span></button>
+                    <button onClick={ () => setShowFeedback(true)} className="btn"><span>Provide feedback</span></button>
+                    <button className="btn"><span>Send reminder</span></button>
+                    <button className="btn"><span>Background check</span></button>
+                </div>}
+                <button className="btn clear" onClick={() => setShowOptionsMenu(true)}><img src="/assets/kebab menu.svg"/></button>
             </td>
         </tr>
     )

@@ -1,8 +1,112 @@
 .Providers{
     /**/
+    table{
+        border-collapse: collapse;
+        margin-top: 20px;
+        width: 100%;
+        th{
+            font-size: .75rem;
+            font-weight: 400;
+            background: #F4F7F9;
+            text-align: left;
+            padding: 5px 10px;
+            color: rgb(141, 138, 151);
+        }
+        td{
+            padding: 0px 10px;
+            font-size: .85rem;
+        }
+        tr:nth-child(even) {
+            background: #F4F7F9;
+            
+        }
+        tr.cancel{
+            background: #FCEFF2;
+        }
+    }
 }
 
 .status-menu{
+    top:0px;
+    left: 0px;
     position: absolute;
     background: white;
+    padding: 0px;
+    z-index: 99;
+    .status{
+        background: transparent;
+        text-transform: none;
+        border-bottom: #B9C6CE 1px dashed; 
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        padding: 10px 15px;
+        &>span{
+          display: flex;
+          white-space: nowrap;
+          span{
+              border:none;
+          }
+          img{
+            margin-right: 10px;
+          }
+        }
+    
+    }
+    .status:last-of-type{
+        border-bottom: none; 
+    }
+}
+
+.options-menu{
+    top:0px;
+    right: 0px;
+    position: absolute;
+    background: white;
+    padding: 5px;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    .btn{
+        background: transparent;
+        text-transform: none;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        padding: 10px;
+        color: hsl(210, 7%, 29%);
+    }
+    .status:last-of-type{
+        border-bottom: none; 
+    }
+}
+
+.Feedback{
+    position: fixed;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background:rgba(38, 78, 102,.6);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px;
+
+    .card{
+        width: 250px;
+        .star{
+            margin-right:5px;
+            cursor: pointer;
+        }
+        .close{
+            cursor: pointer;
+            position: absolute;
+            color: rgba(38, 78, 102,.6);
+            top:5px;
+            right: 15px;
+            font-size: 1.2rem;
+        }
+    }
 }
