@@ -6,8 +6,8 @@ import Feedback from './Feedback'
 
 const Providers = () => {
 
-    const [providers, setProviders] = useState([]);
-    const {baseURL, token, showFeedback} = useContext(MyContext);
+    
+    const {baseURL, token, showFeedback,providers, setProviders} = useContext(MyContext);
 
     useEffect(() => {
         if(token){

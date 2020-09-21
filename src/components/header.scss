@@ -64,3 +64,37 @@ $textColor:#46555E;
         height: 35px;
     }
 }
+
+
+.Config{
+    position: fixed;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background:rgba(38, 78, 102,.6);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px;
+    z-index: 999;
+
+    .card{
+        width: 350px;
+
+        .close{
+            cursor: pointer;
+            position: absolute;
+            color: rgba(38, 78, 102,.6);
+            top:5px;
+            right: 15px;
+            font-size: 1.2rem;
+        }
+        input{
+            width: 320px;
+        }
+    }
+}
+.red-bkg{
+    background-color: #f95555;
+}

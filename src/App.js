@@ -16,7 +16,9 @@ function App() {
   const [isAuth,setIsAuth] = useState(false)
   const [token,setToken] = useState(null)
   const [user,setUser] = useState(null)
+  const [providers, setProviders] = useState([]);
   const [showFeedback,setShowFeedback] = useState(false)
+  const [showConfig,setShowConfig] = useState(false)
   return (
     <MyContext.Provider value={
       {
@@ -24,7 +26,9 @@ function App() {
         isAuth, setIsAuth,
         token,setToken,
         user,setUser,
-        showFeedback,setShowFeedback
+        showFeedback,setShowFeedback,
+        showConfig,setShowConfig,
+        providers, setProviders
       }
     }>
 
