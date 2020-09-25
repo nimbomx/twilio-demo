@@ -42,7 +42,7 @@ const SignIn = ({onShow}) => {
         });
     }
     return  (
-        <div className="d-flex flex-direction-column align-items-center p20">
+        <div className="d-flex flex-direction-column align-items-center float-margin">
     <form className="SignIn card mb20" onSubmit={signIn}>
         <h1 className="d-flex"><img src="/assets/TrueCare24_logo.svg"/> Sign In</h1>
         <div className="input-group">

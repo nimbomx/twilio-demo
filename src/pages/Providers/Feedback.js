@@ -12,7 +12,7 @@ const Feedback = () => {
     }
     return (
         <div onClick={evt => close(evt)}  className="Feedback">
-            <div className="card position-relative">
+            <div className="card position-relative float-margin">
                 <div onClick={evt => close(evt)} className="close">x</div>
                 <div className="mb20">
                     Set the rating a    nd provide 
@@ -26,7 +26,7 @@ const Feedback = () => {
                 <img className="star" src="/assets/Star grey.svg"/>
                 </div>
                 <textarea className="m0 fit-available mb20" cols="10" placeholder="Type here"></textarea>
-                <button className="btn m0 p12 w100">Save</button>
+                <button className="btn">Save</button>
             </div>
         </div>
     )

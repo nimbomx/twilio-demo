@@ -80,12 +80,36 @@ $textColor:#46555E;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 40px;
     z-index: 999;
+    overflow: auto;
 
     .card{
-        width: 350px;
+        flex:1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        padding: 20px;
+        max-width: 350px;
+        form{
+            display: flex;
+            flex:1;
+            flex-direction: column;
+            padding: 0px;
+            margin: 0px;
+            max-width: 100%;
+            .input-group{
+                flex: 1;
+                display: flex;
+                width: 100%;flex-direction: column;
+                small{
+                    margin-bottom: 10px;
+                }
+                input{
+                    flex: 1;
+                }
+            }
 
+        }
         .close{
             cursor: pointer;
             position: absolute;
@@ -94,10 +118,10 @@ $textColor:#46555E;
             right: 15px;
             font-size: 1.2rem;
         }
-        input{
-            width: 320px;
-        }
+
     }
+
+
 }
 .red-bkg{
     background-color: #f95555;

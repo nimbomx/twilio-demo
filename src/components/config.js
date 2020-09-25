@@ -108,7 +108,7 @@ const Config = () => {
     
     return (
         <div onClick={evt => close(evt)}  className="Config">
-            <div  className="card position-relative">
+            <div  className="card position-relative float-margin">
 
             <form  onSubmit={update}>
                 <div onClick={evt => close(evt)} className="close">x</div>
@@ -117,23 +117,23 @@ const Config = () => {
                     <small>for security reasons, don't forget to destroy your config info</small>
                 </div>
 
-                <div>
+                <div className="input-group">
                     <input className={errors.twilio_account && "error" } value={twilio_account} onChange={ e => setAccount(e.target.value)} placeholder="Twilio Account SID"/>
                     {errors.twilio_account && <small>{errors.twilio_account[0]}</small>}
                 </div>
-                <div>
+                <div className="input-group">
                     <input className={errors.twilio_token && "error" } value={twilio_token} onChange={ e => setToken(e.target.value)} placeholder="Twilio Auth Token"/>
                     {errors.twilio_token && <small>{errors.twilio_token[0]}</small>}
                 </div>
-                <div>
+                <div className="input-group">
                     <input className={errors.twilio_number && "error" } value={twilio_number} onChange={ e => setNumber(e.target.value)} placeholder="Twilio Number"/>
                     {errors.twilio_number && <small>{errors.twilio_number[0]}</small>}
                 </div>
 
-                <button className="btn m0 p12 w100" type="submit">Save</button>
+                <button className="btn" type="submit">Save</button>
             </form>
             <hr/>
-            <button onClick={destroy} className="btn m0 p12 w100 red-bkg">Destroy</button>
+            <button onClick={destroy} className="btn red-bkg">Destroy</button>
             </div>
         </div>
     ) 
