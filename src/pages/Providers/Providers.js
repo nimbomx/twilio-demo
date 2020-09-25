@@ -31,6 +31,9 @@ const Providers = () => {
     return  <>
     <div className="Providers card">
         <div className="card__title">Matched providers</div>
+        <div className="table-responsive">
+
+
         <table>
             <thead>
                 <tr>
@@ -51,6 +54,7 @@ const Providers = () => {
                 ) }
             </tbody>
         </table>
+        </div>
     </div>
         {showFeedback && <Feedback /> }
     </>

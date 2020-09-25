@@ -48,14 +48,14 @@ const LogIn = ({onShow}) => {
 
 
     return  (
-            <div className="d-flex flex-direction-column align-items-center">
+            <div className="d-flex flex-direction-column align-items-center p20">
             <form className="LogIn card mb20" onSubmit={logIn}>
                 <h1 className="d-flex"><img src="/assets/TrueCare24_logo.svg"/> Log In</h1>
-                <div>
+                <div className="input-group">
                     <input className={errors.email && "error" } value={email} onChange={ e => setEmail(e.target.value)} placeholder="Email" type="email"/>
                     {errors.email && <small>{errors.email[0]}</small>}
                 </div>
-                <div>
+                <div className="input-group">
                     <input className={errors.password && "error" } value={password} onChange={ e => setPassword(e.target.value)} placeholder="Password" type="password"/>
                     {errors.password && <small>{errors.password[0]}</small>}
                 </div>

@@ -18,7 +18,7 @@ const AsideNav = () => {
         }
     ]
     return (
-        <aside className="aside-nav">
+        <aside className="aside-nav sm-hide">
             <div className="aside-nav__logo">
                 <img src="/assets/TrueCare24_logo.svg"/>
             </div>

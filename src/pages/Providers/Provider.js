@@ -185,7 +185,7 @@ const Provider = ({provider}) => {
             </td>
             <td><b>{provider.name}</b></td>
             <td>{provider.email}</td>
-            <td>{showPhoneEditor ? <input onKeyPress={evt => handlePhoneKeyPress(evt)} onChange={updateCurrentPhone} value={current.phone}/> : <span onClick={()=>editPhone(provider)}>{provider.phone}</span>}</td>
+            <td className="nowrap">{showPhoneEditor ? <input onKeyPress={evt => handlePhoneKeyPress(evt)} onChange={updateCurrentPhone} value={current.phone}/> : <span onClick={()=>editPhone(provider)}>{provider.phone}</span>}</td>
             <td>{provider.id}</td>
 
             <td className="position-relative">
